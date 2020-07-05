@@ -77,7 +77,8 @@ def login(username=None, password=None, expiresIn=86400, scope='internal', by_sm
 
     """
     device_token = generate_device_token()
-    home_dir = os.path.expanduser("~")
+    #--# home_dir = os.path.expanduser("~")
+    home_dir = os.path.expanduser("/tmp/")
     data_dir = os.path.join(home_dir, ".tokens")
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)
