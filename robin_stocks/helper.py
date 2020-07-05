@@ -10,7 +10,7 @@ Functions
 from functools import wraps
 
 import requests
-from robin_stocks.globals import LOGGED_IN, SESSION
+from robin_stocks.robin_stocks.globals import LOGGED_IN, SESSION
 
 
 def set_login_state(logged_in):
