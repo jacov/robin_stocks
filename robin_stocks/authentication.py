@@ -98,7 +98,7 @@ def login(username=None, password=None, expiresIn=86400, scope='internal', by_sm
         'password': password,
         'scope': scope,
         'username': username,
-        'challenge_type': 'none',
+        'mfa_required': 'false',
         'device_token': device_token
     }
     #    #'challenge_type': challenge_type,
