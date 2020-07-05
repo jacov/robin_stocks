@@ -1,4 +1,4 @@
-from robin_stocks.account import get_all_positions,             \
+from robin_stocks.account.py import get_all_positions,             \
                      get_bank_account_info,         \
                      get_bank_transfers,            \
                      unlink_bank_account,           \
