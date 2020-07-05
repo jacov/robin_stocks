@@ -1,10 +1,10 @@
 """Contains functions for getting information related to the user account."""
 import os
 
-import robin_stocks.robin_stocks.helper.py as helper
-import robin_stocks.robin_stocks.profiles.py as profiles
-import robin_stocks.robin_stocks.stocks.py as stocks
-import robin_stocks.robin_stocks.urls.py as urls
+import robin_stocks.robin_stocks.helper as helper
+import robin_stocks.robin_stocks.profiles as profiles
+import robin_stocks.robin_stocks.stocks as stocks
+import robin_stocks.robin_stocks.urls as urls
 
 
 @helper.login_required
