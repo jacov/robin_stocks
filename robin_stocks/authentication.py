@@ -85,11 +85,11 @@ def login(username=None, password=None, expiresIn=86400, scope='internal', by_sm
     creds_file = "robinhood.pickle"
     pickle_path = os.path.join(data_dir, creds_file)
     # Challenge type is used if not logging in with two-factor authentication.
-    if by_sms:
-        challenge_type = "sms"
-    else:
-        challenge_type = "email"
-
+    #if by_sms:
+    #    challenge_type = "sms"
+    #else:
+    #    challenge_type = "email"
+    #
     url = urls.login_url()
     payload = {
         'client_id': 'c82SH0WZOsabOXGP2sxqcj34FxkvfnWRZBKlBjFS',
@@ -98,9 +98,9 @@ def login(username=None, password=None, expiresIn=86400, scope='internal', by_sm
         'password': password,
         'scope': scope,
         'username': username,
-        'challenge_type': challenge_type,
         'device_token': device_token
     }
+    #    #'challenge_type': challenge_type,
     # If authentication has been stored in pickle file then load it. Stops login server from being pinged so much.
     if os.path.isfile(pickle_path):
         # If store_session has been set to false then delete the pickle file, otherwise try to load it.
@@ -145,27 +145,27 @@ def login(username=None, password=None, expiresIn=86400, scope='internal', by_sm
     data = helper.request_post(url, payload)
     # Handle case where mfa or challenge is required.
     if data:
-        if 'mfa_required' in data:
-            mfa_token = input("Please type in the MFA code: ")
-            payload['mfa_code'] = mfa_token
-            res = helper.request_post(url, payload, jsonify_data=False)
-            while (res.status_code != 200):
-                mfa_token = input(
-                    "That MFA code was not correct. Please type in another MFA code: ")
-                payload['mfa_code'] = mfa_token
-                res = helper.request_post(url, payload, jsonify_data=False)
-            data = res.json()
-        elif 'challenge' in data:
-            challenge_id = data['challenge']['id']
-            sms_code = input('Enter Robinhood code for validation: ')
-            res = respond_to_challenge(challenge_id, sms_code)
-            while 'challenge' in res and res['challenge']['remaining_attempts'] > 0:
-                sms_code = input('That code was not correct. {0} tries remaining. Please type in another code: '.format(
-                    res['challenge']['remaining_attempts']))
-                res = respond_to_challenge(challenge_id, sms_code)
-            helper.update_session(
-                'X-ROBINHOOD-CHALLENGE-RESPONSE-ID', challenge_id)
-            data = helper.request_post(url, payload)
+        #if 'mfa_required' in data:
+        #    mfa_token = input("Please type in the MFA code: ")
+        #    payload['mfa_code'] = mfa_token
+        #    res = helper.request_post(url, payload, jsonify_data=False)
+        #    while (res.status_code != 200):
+        #        mfa_token = input(
+        #            "That MFA code was not correct. Please type in another MFA code: ")
+        #        payload['mfa_code'] = mfa_token
+        #        res = helper.request_post(url, payload, jsonify_data=False)
+        #    data = res.json()
+        #elif 'challenge' in data:
+        #    challenge_id = data['challenge']['id']
+        #    sms_code = input('Enter Robinhood code for validation: ')
+        #    res = respond_to_challenge(challenge_id, sms_code)
+        #    while 'challenge' in res and res['challenge']['remaining_attempts'] > 0:
+        #        sms_code = input('That code was not correct. {0} tries remaining. Please type in another code: '.format(
+        #            res['challenge']['remaining_attempts']))
+        #        res = respond_to_challenge(challenge_id, sms_code)
+        #    helper.update_session(
+        #        'X-ROBINHOOD-CHALLENGE-RESPONSE-ID', challenge_id)
+        #    data = helper.request_post(url, payload)
         # Update Session data with authorization or raise exception with the information present in data.
         if 'access_token' in data:
             token = '{0} {1}'.format(data['token_type'], data['access_token'])
