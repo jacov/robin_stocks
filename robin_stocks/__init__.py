@@ -1,4 +1,4 @@
-from .account import get_all_positions,             \
+from robin_stocks.account import get_all_positions,             \
                      get_bank_account_info,         \
                      get_bank_transfers,            \
                      unlink_bank_account,           \
@@ -26,10 +26,10 @@ from .account import get_all_positions,             \
                      build_holdings,                \
                      build_user_profile
 
-from .authentication import login, \
+from robin_stocks.authentication import login, \
                             logout
 
-from .crypto import load_crypto_profile,        \
+from robin_stocks.crypto import load_crypto_profile,        \
                     get_crypto_currency_pairs,  \
                     get_crypto_info,            \
                     get_crypto_quote,           \
@@ -37,20 +37,20 @@ from .crypto import load_crypto_profile,        \
                     get_crypto_positions,       \
                     get_crypto_historicals
 
-from .export import export_completed_stock_orders, \
+from robin_stocks.export import export_completed_stock_orders, \
                     export_completed_option_orders
 
-from .helper import request_get,      \
+from robin_stocks.helper import request_get,      \
                     request_post,     \
                     request_delete,   \
                     request_document, \
                     update_session
 
-from .markets import get_currency_pairs,        \
+from robin_stocks.markets import get_currency_pairs,        \
                      get_markets,               \
                      get_top_movers
 
-from .options import get_aggregate_positions,                           \
+from robin_stocks.options import get_aggregate_positions,                           \
                      get_market_options,                                \
                      get_all_option_positions,                          \
                      get_open_option_positions,                         \
@@ -66,7 +66,7 @@ from .options import get_aggregate_positions,                           \
                      get_option_instrument_data,                        \
                      get_option_historicals
 
-from .orders import get_all_stock_orders,           \
+from robin_stocks.orders import get_all_stock_orders,           \
                     get_all_option_orders,          \
                     get_all_crypto_orders,          \
                     get_all_open_stock_orders,      \
@@ -109,14 +109,14 @@ from .orders import get_all_stock_orders,           \
                     order_sell_crypto_by_quantity,  \
                     order_sell_crypto_limit
 
-from .profiles import load_account_profile,     \
+from robin_stocks.profiles import load_account_profile,     \
                       load_basic_profile,       \
                       load_investment_profile,  \
                       load_portfolio_profile,   \
                       load_security_profile,    \
                       load_user_profile
 
-from .stocks import get_quotes,                 \
+from robin_stocks.stocks import get_quotes,                 \
                     get_fundamentals,           \
                     get_instruments_by_symbols, \
                     get_instrument_by_url,      \
